@@ -1,7 +1,7 @@
 //Global Variables
 // var enterButton = document.querySelector('.enter-button');
-var url = '' ;
-var urlTitle = '' ;
+var url = document.getElementById('url');
+var urlTitle = document.getElementById('title');
 //Functions
 
 //Button
@@ -9,7 +9,7 @@ var urlTitle = '' ;
 //Event Listeners
 
 document.querySelector('.enter-button').addEventListener('click', function() {
-	url = document.getElementById('url').value;
-	urlTitle = document.getElementById('title').value;
-	console.log(url, title);
+	url = url.value;
+  urlTitle = urlTitle.value;
+	console.log(url, urlTitle)
 }) 
