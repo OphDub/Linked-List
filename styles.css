@@ -1,0 +1,82 @@
+body{
+	font-family: Open Sans;
+	width: 100%;
+	display: flex;
+}
+
+section{
+	display: inline-block;
+	background-color: #455A64;
+	font-color: #FFFFFF;
+	flex: 1;
+	text-align: center;
+}
+
+section h1{
+	display: inline;
+	color: #FFFFFF;
+	font-weight: 800;
+	width: 90%;
+}
+
+header img{
+	width: 8%;
+	height: auto;
+	margin: 0 5px 0 5px;
+}
+
+input{
+	display: block;
+	margin: 10px auto 10px auto;
+	padding: 5px
+	border: 0;
+	width: 90%;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;
+}
+
+.user-input{
+	flex: 1 auto;
+	overflow: auto;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translate(0%, -50%);  
+  transform: translate(0%, -50%);
+}
+
+.input-wrapper{
+	display: flex;
+	height: 100vh;
+	position: relative;
+}
+
+.url-list{
+	background-color: #CFD8DC;
+	font-color: #FFFFFF;
+}
+
+.enter-button{
+	background-color: #FFC107;
+	color: #FFFFFF;
+	font-family: Open Sans;
+	font-weight: 800;
+	margin: 10px auto 10px auto;
+	padding: 0;
+	border-radius: 0;
+	border: none;
+	width: 90%;
+}
+
+.enter-button:hover{
+	background-color: #FFD773;
+}
+
+.bookmark{
+
+}
+
+.bookmark h3{
+	display: block;
+	border-bottom: 1px solid #455A64;
+}
