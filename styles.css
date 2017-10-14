@@ -95,7 +95,7 @@ input{
 
 .bookmark h3{
 	display: block;
-	border-bottom: 1px solid #455A64;
+	border-bottom: 1px solid #CFD8DC;
 	color: #455A64;
 	width: 90%;
 	margin: auto;
@@ -106,12 +106,19 @@ input{
 }
 
 .user-supplied-link{
-	border-bottom: 1px solid #455A64;
+	border-bottom: 1px solid #CFD8DC;
 	width: 92%;
 	margin: 5px auto 5px auto;
 	padding: 15px 0 15px 0;
 	text-align: left;
 	display: block;
+	text-decoration-color: #F2F4F4;
+}
+
+.user-supplied-link:hover {
+	text-decoration-color: #FFC107;
+	font-weight: 800;
+	color: #455A64;
 }
 
 .read-delete{
@@ -122,9 +129,27 @@ input{
 
 .left{
 	float: left;
+	text-decoration-color: #F2F4F4;
+}
+
+.left:hover {
+	text-decoration-color: #FFC107;
+	font-weight: 800;
+	color: #455A64;
 }
 
 .right{
 	float: right;
 }
 
+.bookmark-read{
+	background-color: #F2F4F4;
+}
+
+.user-supplied-link-read {
+	text-decoration-color: #CFD8DC;
+}
+
+.left-read{
+	color: #F05828;
+}

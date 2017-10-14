@@ -4,27 +4,25 @@ var url = document.getElementById('url');
 var urlTitle = document.getElementById('title');
 var bookmarkCard
 var displayWrapper = document.querySelector('.display-wrapper');
+var readButton 
 
 //Functions
 function displayBookmark() {
 	bookmarkCard = document.createElement('div');
 	bookmarkCard.className = 'bookmark';
-	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><a class="left" href="">Read</a><a class="right" href="">Delete</a></div>';
+	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><button class="left" id="read-button" href="">Read</button><button class="right" href="">Delete</button></div>';
+	readButton = document.getElementById('read-button');
+	var bookmarkElement = document.querySelector('.bookmark');
 	displayWrapper.appendChild(bookmarkCard);
-	clearForm();
-	clearVariables();
-	console.log(url.value, urlTitle.value);
 };
 
-function clearForm() {
-	url.value = '';
-	urlTitle.value = '';
+function markAsRead() {
+	bookmarkElement.className += 'bookmark-read';
+	url.className += 'user-supplied-link-read';
+	readButton.className += 'left-read';
+	readButton.innerHTML = 'It worked';
 }
 
-function clearVariables() {
-	document.getElementById('url').value = '';
-	document.getElementById('title').value = '';
-}
 //Button
 
 //Event Listeners
@@ -35,3 +33,9 @@ document.querySelector('.enter-button').addEventListener('click', function() {
 	console.log(url, urlTitle);
 	displayBookmark();
 }) 
+
+document.querySelector('.url-list').addEventListener('click', function(event) {
+	if (event.target.className== 'read-button') {
+		alert('it worked');
+	}
+});
