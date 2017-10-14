@@ -127,6 +127,23 @@ input{
 	overflow: hidden;
 }
 
+.read-delete button{
+	border: none;
+	background-color: transparent;
+}
+
+.read-delete button:focus{
+	border: none;
+	outline: 0;
+	background-color: transparent;
+}
+
+.read-delete button:active{
+	border: none;
+	outline: 0;
+	background-color: transparent;
+}
+
 .left{
 	float: left;
 	text-decoration-color: #F2F4F4;
