@@ -7,9 +7,10 @@ var displayWrapper = document.querySelector('.display-wrapper');
 
 //Functions
 function displayBookmark() {
-	//bookmarkCard = '<div class="bookmark"><h3>The Website Title</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><a class="left" href="">Read</a><a class="right" href="">Delete</a></div></div>';
-	displayWrapper.innerHTML = url;
-	displayWrapper.innerHTML = urlTitle;
+	bookmarkCard = document.createElement('div');
+	bookmarkCard.className = 'bookmark';
+	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><a class="left" href="">Read</a><a class="right" href="">Delete</a></div>';
+	displayWrapper.appendChild(bookmarkCard);
 	console.log();
 };
 //Button
