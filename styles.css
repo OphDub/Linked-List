@@ -17,7 +17,7 @@ section h1{
 	color: #FFFFFF;
 	font-weight: 800;
 	font-size: 30px;
-	width: 90%;
+	width: 100%;
 }
 
 header img{
@@ -31,7 +31,7 @@ input{
 	margin: 20px auto 20px auto;
 	padding: 5px
 	border: 0;
-	width: 90%;
+	width: 100%;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;
@@ -39,15 +39,19 @@ input{
 
 .user-input{
 	flex: 1 auto;
+	max-width: 90%;
 	overflow: auto;
 	position: absolute;
 	top: 50%;
 	-webkit-transform: translate(0%, -50%);  
   transform: translate(0%, -50%);
+  width: 95%;
 }
 
 .input-wrapper{
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	height: 100vh;
 	position: relative;
 }
@@ -66,7 +70,7 @@ input{
 	padding: 0;
 	border-radius: 0;
 	border: none;
-	width: 90%;
+	width: 100%;
 	height: 18px;
 }
 
@@ -92,20 +96,27 @@ input{
 .bookmark h3{
 	display: block;
 	border-bottom: 1px solid #455A64;
+	color: #455A64;
 	width: 90%;
 	margin: auto;
-	padding: 5px;
+	padding: 10px;
+	font-size: 30px;
+	font-weight: 800;
+	text-align: left;
 }
 
 .user-supplied-link{
 	border-bottom: 1px solid #455A64;
-	width: 90%;
+	width: 92%;
 	margin: 5px auto 5px auto;
+	padding: 15px 0 15px 0;
+	text-align: left;
+	display: block;
 }
 
 .read-delete{
-	width: 90%;
-	margin: 5px auto 5px auto;
+	width: 92%;
+	margin: 10px auto 10px auto;
 	overflow: hidden;
 }
 
