@@ -11,8 +11,20 @@ function displayBookmark() {
 	bookmarkCard.className = 'bookmark';
 	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><a class="left" href="">Read</a><a class="right" href="">Delete</a></div>';
 	displayWrapper.appendChild(bookmarkCard);
-	console.log();
+	clearForm();
+	clearVariables();
+	console.log(url.value, urlTitle.value);
 };
+
+function clearForm() {
+	url.value = '';
+	urlTitle.value = '';
+}
+
+function clearVariables() {
+	document.getElementById('url').value = '';
+	document.getElementById('title').value = '';
+}
 //Button
 
 //Event Listeners
