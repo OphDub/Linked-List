@@ -13,9 +13,14 @@ function displayBookmark() {
 	displayWrapper.appendChild(bookmarkCard);
 };
 
-document.querySelector('.enter-button').addEventListener('click', function() {
-	displayBookmark();
-}) 
+// document.querySelector('.enter-button').addEventListener('click', function() {
+// 	// var webForm = document.forms['website-form'];
+// 	// if (webForm.elements[0].className == 'input:invalid' || webForm.elements[1].className == 'input:invalid') {
+// 	// 	console.log('nothing');
+// 	// 	return;
+// 	// } else {
+// 		displayBookmark();
+// }) 
 
 function removeCard(e) {
 	var target = e.target
@@ -35,5 +40,30 @@ $("#right-container").on('click', '#read-button', function() {
 	$(this).closest('a').toggleClass('user-supplied-link-read');
 })
 
+// function validateForm () {
+// 	var webForm = document.forms['website-form'];
+// 	if (webForm.elements[0] == '' && webForm.elements[1] == '') {
+// 		console.log('working');
+// 	} 
 
+// $('#website-form').submit(function(){
+// 	if($.trim($('#title').val())==='' || $.trim($('#url').val())==='') {
+// 		console.log('nothing');
+// 		return false;
+// 	} else {
+// 		displayBookmark();
+// 	}
+// })
+var titleInput = document.querySelector('#title');
+var urlInput = document.querySelector('#url');
+var submitButton = document.querySelector('.enter-button');
+titleInput.addEventListener('keyup', disable);
+urlInput.addEventListener('keyup', disable);
 
+function disable () {
+	if (titleInput.value.length == 0) {
+		submitButton.disabled = true;
+	} else {
+		submitButton.disabled = false;
+	}
+}
