@@ -178,3 +178,12 @@ input{
 .left-read{
 	color: #F05828;
 }
+
+@media all and (max-width: 640px) {
+	body {
+		flex-direction: column;
+		}
+	.input-wrapper {
+		height: 35vh;
+	}
+	}
