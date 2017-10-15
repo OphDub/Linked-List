@@ -1,14 +1,14 @@
 //Global Variables
-
-var bookmarkCard;
 var displayWrapper = document.querySelector('.display-wrapper');
 
 
 //Functions
+
+//DISPLAY FUNCTION
 function displayBookmark() {
 	var url = document.getElementById('url').value;
 	var urlTitle = document.getElementById('title').value;
-	bookmarkCard = document.createElement('div');
+	var bookmarkCard = document.createElement('div');
 	bookmarkCard.className = 'bookmark';
 	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><button class="left" id="read-button">Read</button><button class="right" id="delete-button">Delete</button></div>';
 	displayWrapper.appendChild(bookmarkCard);
@@ -16,6 +16,7 @@ function displayBookmark() {
 	document.getElementById('delete-button').addEventListener('click', deleteCard);
 };
 
+//ADD .READ CLASS ON CLICK
 function markAsRead() {
 	var bookmarkElement = document.querySelector('.bookmark');
 	var readButton = document.getElementById('read-button');
@@ -25,20 +26,14 @@ function markAsRead() {
 	readButton.classList.toggle('left-read');
 }
 
+//DELETE CARD
 function deleteCard() {
 	console.log('Delete attempt');
 	this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
 }
 
-//Event Listeners
+//DISPLAY BOOKMARK LISTENER
 document.querySelector('.enter-button').addEventListener('click', function() {
-
 	displayBookmark();
 }) 
-
-document.querySelector('.url-list').addEventListener('click', function(event) {
-	if (event.target.className== 'read-button') {
-	console.log('Class change');
-	}
-});
 
