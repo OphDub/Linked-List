@@ -40,7 +40,6 @@ input{
 .user-input{
 	flex: 1 auto;
 	max-width: 90%;
-	overflow: auto;
 	position: absolute;
 	top: 50%;
 	-webkit-transform: translate(0%, -50%);  
@@ -54,6 +53,14 @@ input{
 	justify-content: center;
 	height: 100vh;
 	position: relative;
+}
+
+#website-form {
+	margin:0;
+}
+
+#error-display {
+	color: red;
 }
 
 .url-list{
