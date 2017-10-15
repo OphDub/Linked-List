@@ -86,6 +86,10 @@ input{
 	padding-top: 2%;	
 }
 
+.display-wrapper ul li {
+	text-decoration: none;
+}
+
 .bookmark{
 	width: 90%;
 	border: 1px solid #607D8B;
@@ -105,6 +109,22 @@ input{
 	text-align: left;
 }
 
+.bookmark:hover > .user-supplied-link{
+	text-decoration-color: #FFC107;
+	font-weight: 800;
+	color: #455A64;
+}
+
+.bookmark:hover .read-delete button{
+	text-decoration: underline;
+	text-decoration-color: #FFC107;
+	color: #455A64;
+}
+
+.bookmark:hover .read-delete .left {
+	font-weight: 800;
+}
+
 .user-supplied-link{
 	border-bottom: 1px solid #CFD8DC;
 	width: 92%;
@@ -113,12 +133,6 @@ input{
 	text-align: left;
 	display: block;
 	text-decoration-color: #F2F4F4;
-}
-
-.user-supplied-link:hover {
-	text-decoration-color: #FFC107;
-	font-weight: 800;
-	color: #455A64;
 }
 
 .read-delete{
@@ -147,12 +161,6 @@ input{
 .left{
 	float: left;
 	text-decoration-color: #F2F4F4;
-}
-
-.left:hover {
-	text-decoration-color: #FFC107;
-	font-weight: 800;
-	color: #455A64;
 }
 
 .right{
