@@ -1,12 +1,13 @@
 //Global Variables
-var url = document.getElementById('url');
-var urlTitle = document.getElementById('title');
-var bookmarkCard
+
+var bookmarkCard;
 var displayWrapper = document.querySelector('.display-wrapper');
 
 
 //Functions
 function displayBookmark() {
+	var url = document.getElementById('url').value;
+	var urlTitle = document.getElementById('title').value;
 	bookmarkCard = document.createElement('div');
 	bookmarkCard.className = 'bookmark';
 	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><button class="left" id="read-button">Read</button><button class="right" id="delete-button">Delete</button></div>';
@@ -31,9 +32,7 @@ function deleteCard() {
 
 //Event Listeners
 document.querySelector('.enter-button').addEventListener('click', function() {
-	url = url.value;
-  urlTitle = urlTitle.value;
-	console.log(url, urlTitle);
+
 	displayBookmark();
 }) 
 
