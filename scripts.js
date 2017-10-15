@@ -47,12 +47,12 @@ $("#right-container").on('click', '#read-button', function() {
 	console.log("hi")
 	console.log($(this).text());
 	$(this).toggleClass('left-read')
-	var parent = $(this).parents().eq(0);
-	console.log(parent)
-	var grandfather = $(this).parents().eq(2);
-	console.log(grandfather)
-	var greatGrandfather = $(this).parents().eq(3);
-	console.log(greatGrandfather)
+	console.log($(this).parents()[1]);
+	$(this).closest('.bookmark').toggleClass('bookmark-read');
+	$(this).closest('a').toggleClass('user-supplied-link-read');
+	
+	
+
 })
 
 
