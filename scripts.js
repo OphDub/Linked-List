@@ -12,8 +12,7 @@ function displayBookmark() {
 	bookmarkCard.className = 'bookmark';
 	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><button class="left" id="read-button">Read</button><button class="right" id="delete-button">Delete</button></div>';
 	displayWrapper.appendChild(bookmarkCard);
-	document.getElementById('read-button').addEventListener('click', markAsRead);
-	document.getElementById('delete-button').addEventListener('click', deleteCard);
+	readDeleteButtons();
 };
 
 //ADD .READ CLASS ON CLICK
@@ -27,13 +26,31 @@ function markAsRead() {
 }
 
 //DELETE CARD
-function deleteCard() {
-	console.log('Delete attempt');
-	this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
-}
+// function deleteCard() {
+// 	console.log('Delete attempt');
+// 	this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+// }
 
 //DISPLAY BOOKMARK LISTENER
 document.querySelector('.enter-button').addEventListener('click', function() {
 	displayBookmark();
 }) 
 
+function readDeleteButtons () {
+	document.getElementById('read-button').addEventListener('click', markAsRead);
+	// document.getElementById('delete-button').addEventListener('click', deleteCard);
+}
+
+function removeCard(e) {
+	var target = e.target
+	while (target.className !== 'display-wrapper') {
+		if(target.className === 'right') {
+			return target.parentNode.parentNode.parentNode.removeChild(target.parentNode.parentNode);
+			console.log("bye")
+		}
+		console.log("hi")
+		 target = target.parentNode.parentNode;
+	}
+}
+
+document.querySelector('.display-wrapper').addEventListener('click', removeCard);
