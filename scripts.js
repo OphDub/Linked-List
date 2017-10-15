@@ -7,7 +7,8 @@ titleInput.addEventListener('keyup', disable);
 urlInput.addEventListener('keyup', disable);
 document.querySelector('.display-wrapper').addEventListener('click', removeCard);
 
-submitButton.addEventListener('click', displayBookmark)
+// submitButton.addEventListener('click', displayBookmark)
+submitButton.addEventListener('click', displayError)
 
 //Functions
 
@@ -47,3 +48,24 @@ function disable () {
 		submitButton.disabled = false;
 	}
 }
+
+function displayError() {
+	var errorDisplay = $('#error-display');
+	if ($('#title').val().length === 0 && $('#url').val().length === 0) {
+		errorDisplay.text("Please enter website title and url");
+		$('#title').val().length = 0;
+		$('#url').val().length = 0;
+		return;
+	} else if ($('#title').val().length === 0 ) {
+		errorDisplay.text("Please enter website title")
+		$('#title').val().length = 0;
+	} else if ($('#url').val().length === 0) {
+		errorDisplay.text("Please enter a URL")
+		$('#url').val().length = 0;
+	}
+	else {
+		displayBookmark();
+		errorDisplay.text("");
+	}
+}
+
