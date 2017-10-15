@@ -24,15 +24,6 @@ function displayBookmark() {
 	submitButton.disabled = true;
 };
 
-// document.querySelector('.enter-button').addEventListener('click', function() {
-// 	// var webForm = document.forms['website-form'];
-// 	// if (webForm.elements[0].className == 'input:invalid' || webForm.elements[1].className == 'input:invalid') {
-// 	// 	console.log('nothing');
-// 	// 	return;
-// 	// } else {
-// 		displayBookmark();
-// }) 
-
 function removeCard(e) {
 	var target = e.target
 	while (target.className !== 'display-wrapper') {
