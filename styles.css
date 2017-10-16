@@ -3,6 +3,7 @@ body{
 	width: 100%;
 	display: flex;
 	flex-wrap: nowrap;
+	background-color: #D1D8DC;
 }
 
 section{
@@ -64,7 +65,34 @@ input{
 	margin:0;
 }
 
-#error-display {
+.error-feedback-display {
+	position: relative;
+	text-align: center;
+	height: 5vh;
+	color: red;
+}
+
+.count-display {
+	text-align: left;
+}
+
+.circle {
+	height: 25px;
+	width: 25px;
+	border-radius: 50%;
+	line-height: 25px;
+	background-color: #D1D8DC;
+	text-align: center;
+}
+
+.bookmarks-on-page {
+	display: inline-block;
+	color:#495962;
+}
+
+.bookmarks-read-on-page {
+	display: inline-block;
+	float:right;
 	color: red;
 }
 
