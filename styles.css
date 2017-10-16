@@ -2,6 +2,7 @@ body{
 	font-family: Open Sans;
 	width: 100%;
 	display: flex;
+	flex-wrap: nowrap;
 }
 
 section{
@@ -16,7 +17,7 @@ section h1{
 	display: inline;
 	color: #FFFFFF;
 	font-weight: 800;
-	font-size: 30px;
+	font-size: 70px;
 	width: 100%;
 }
 
@@ -40,19 +41,19 @@ input{
 .user-input{
 	flex: 1 auto;
 	max-width: 90%;
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	-webkit-transform: translate(0%, -50%);  
   transform: translate(0%, -50%);
-  width: 95%;
-}
+/*  width: 95%;
+*/}
 
 .input-wrapper{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
 	position: relative;
+	min-height: 100vh;
 }
 
 #website-form {
@@ -89,8 +90,7 @@ input{
 	text-align: center;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
-	box-sizing: border-box;
-	padding-top: 2%;	
+	box-sizing: border-box;	
 }
 
 .display-wrapper ul li {
@@ -101,7 +101,7 @@ input{
 	width: 90%;
 	border: 1px solid #607D8B;
 	background-color: white;
-	margin: auto;
+	margin: 15px auto 15px auto;
 }
 
 .bookmark h3{
@@ -189,8 +189,24 @@ input{
 @media all and (max-width: 640px) {
 	body {
 		flex-direction: column;
-		}
+	}
+
+	section h1 {
+		font-size: 30px;
+	}
+
+	header img{
+		width: 9%;
+		height: auto;
+		margin: 0 5px 0 5px;
+	}
+
 	.input-wrapper {
-		height: 35vh;
+		min-height: 150px;	
+		max-height: 350px;
+	}
+	.user-input {
+		position: relative;
+		transform: translate(0%);
 	}
 	}
