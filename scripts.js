@@ -3,8 +3,6 @@ var displayWrapper = document.querySelector('.display-wrapper');
 var titleInput = document.querySelector('#title');
 var urlInput = document.querySelector('#url');
 var submitButton = document.querySelector('.enter-button');
-titleInput.addEventListener('keyup', disable);
-urlInput.addEventListener('keyup', disable);
 document.querySelector('.display-wrapper').addEventListener('click', removeCard);
 
 // submitButton.addEventListener('click', displayBookmark)
@@ -22,7 +20,7 @@ function displayBookmark() {
 	bookmarkCard.className = 'bookmark';
 	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><button class="left" id="read-button">Read</button><button class="right" id="delete-button">Delete</button></div>';
 	displayWrapper.appendChild(bookmarkCard);
-	submitButton.disabled = true;
+	// submitButton.disabled = true;
 };
 
 function removeCard(e) {
@@ -41,31 +39,26 @@ $("#right-container").on('click', '#read-button', function() {
 	$(this).closest('a').toggleClass('user-supplied-link-read');
 })
 
-function disable () {
-	if (titleInput.value.length == 0) {
-		submitButton.disabled = true;
-	} else {
-		submitButton.disabled = false;
-	}
-}
-
 function displayError() {
+	var titleLength = $('#title').val().length;
+	var urlLength = $('#url').val().length;
 	var errorDisplay = $('#error-display');
-	if ($('#title').val().length === 0 && $('#url').val().length === 0) {
+
+	if (titleLength === 0 && urlLength === 0) {
 		errorDisplay.text("Please enter website title and url");
-		$('#title').val().length = 0;
-		$('#url').val().length = 0;
+		titleLength = 0;
+		urlLength= 0;
 		return;
-	} else if ($('#title').val().length === 0 ) {
+	} else if (titleLength === 0 ) {
 		errorDisplay.text("Please enter website title")
-		$('#title').val().length = 0;
-	} else if ($('#url').val().length === 0) {
+		titleLength = 0;
+	} else if (urlLength === 0) {
 		errorDisplay.text("Please enter a URL")
-		$('#url').val().length = 0;
+		urlLength = 0;
 	}
 	else {
 		displayBookmark();
-		errorDisplay.text("");
+		errorDisplay.text('');
 	}
 }
 
