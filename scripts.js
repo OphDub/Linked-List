@@ -3,10 +3,28 @@ var displayWrapper = document.querySelector('.display-wrapper');
 var titleInput = document.querySelector('#title');
 var urlInput = document.querySelector('#url');
 var submitButton = document.querySelector('.enter-button');
-document.querySelector('.display-wrapper').addEventListener('click', removeCard);
 
-// submitButton.addEventListener('click', displayBookmark)
+var bookmarkReadCount = 0;
+var bookmarkCount = 0;
+var bookReadCountDisplay = document.querySelector('.bookmarks-read-on-page');
+var bookCountDisplay = document.querySelector('.bookmarks-on-page');
+
+displayWrapper.addEventListener('click', removeCard);
 submitButton.addEventListener('click', displayError)
+
+$("#right-container").on('click', '#read-button', function() {
+	$(this).toggleClass('left-read')
+	$(this).closest('.bookmark').toggleClass('bookmark-read');
+	$(this).closest('a').toggleClass('user-supplied-link-read');
+	counter();
+})
+
+function counter() {
+	bookmarkReadCount = document.querySelectorAll('.bookmark-read').length;
+	bookmarkCount = document.querySelectorAll('.bookmark').length;
+	bookReadCountDisplay.innerHTML = bookmarkReadCount;
+	bookCountDisplay.innerHTML = bookmarkCount - bookmarkReadCount;
+}
 
 //Functions
 
@@ -20,7 +38,9 @@ function displayBookmark() {
 	bookmarkCard.className = 'bookmark';
 	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><button class="left" id="read-button">Read</button><button class="right" id="delete-button">Delete</button></div>';
 	displayWrapper.appendChild(bookmarkCard);
-	// submitButton.disabled = true;
+	bookmarkCount = document.querySelectorAll('.bookmark').length;
+	bookCountDisplay.innerHTML = bookmarkCount;
+	console.log(bookmarkCount)
 };
 
 function removeCard(e) {
@@ -33,16 +53,10 @@ function removeCard(e) {
 	}
 }
 
-$("#right-container").on('click', '#read-button', function() {
-	$(this).toggleClass('left-read')
-	$(this).closest('.bookmark').toggleClass('bookmark-read');
-	$(this).closest('a').toggleClass('user-supplied-link-read');
-})
-
 function displayError() {
 	var titleLength = $('#title').val().length;
 	var urlLength = $('#url').val().length;
-	var errorDisplay = $('#error-display');
+	var errorDisplay = $('.error-feedback-display');
 
 	if (titleLength === 0 && urlLength === 0) {
 		errorDisplay.text("Please enter website title and url");
@@ -61,4 +75,7 @@ function displayError() {
 		errorDisplay.text('');
 	}
 }
+
+
+
 
