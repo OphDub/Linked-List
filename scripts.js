@@ -26,6 +26,22 @@ function counter() {
 	bookCountDisplay.innerHTML = bookmarkCount - bookmarkReadCount;
 }
 
+// bookmarkReadCount = document.querySelectorAll('.bookmark-read').length;
+// 	bookmarkCount = document.querySelectorAll('.bookmark').length;
+
+
+function countDown() {
+	var numBookmark = parseInt(document.querySelector('.bookmarks-on-page').innerHTML);
+	var numRead = parseInt(document.querySelector('.bookmarks-read-on-page').innerHTML);
+	
+	if (numBookmark > 0) {
+			bookCountDisplay.innerHTML = numBookmark - 1;
+	}
+	else if (numRead > 0){
+			bookReadCountDisplay.innerHTML = numRead - 1;
+	}
+}
+
 //Functions
 
 //DISPLAY FUNCTION
@@ -47,7 +63,9 @@ function removeCard(e) {
 	var target = e.target
 	while (target.className !== 'display-wrapper') {
 		if(target.className === 'right') {
-			return target.parentNode.parentNode.parentNode.removeChild(target.parentNode.parentNode);
+			target.parentNode.parentNode.parentNode.removeChild(target.parentNode.parentNode);
+			countDown();
+
 		}
 		 target = target.parentNode.parentNode;
 	}
