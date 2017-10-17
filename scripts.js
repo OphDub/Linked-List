@@ -26,21 +26,28 @@ function counter() {
 	bookCountDisplay.innerHTML = bookmarkCount - bookmarkReadCount;
 }
 
-// bookmarkReadCount = document.querySelectorAll('.bookmark-read').length;
-// 	bookmarkCount = document.querySelectorAll('.bookmark').length;
-
-
 function countDown() {
 	var numBookmark = parseInt(document.querySelector('.bookmarks-on-page').innerHTML);
-	var numRead = parseInt(document.querySelector('.bookmarks-read-on-page').innerHTML);
-	
-	if (numBookmark > 0) {
+	bookmarkCount = document.querySelectorAll('.bookmark').length;	
+	console.log(bookmarkCount)
+	if (bookmarkCount > 0){
 			bookCountDisplay.innerHTML = numBookmark - 1;
-	}
-	else if (numRead > 0){
+		} else {
+			bookCountDisplay.innerHTML = 0;
+		}
+}
+
+function countDownRead() {
+	var numRead = parseInt(document.querySelector('.bookmarks-read-on-page').innerHTML);
+	bookmarkReadCount = document.querySelectorAll('.bookmark-read').length;
+	console.log(bookmarkReadCount)
+	if (bookmarkReadCount > 0) {
 			bookReadCountDisplay.innerHTML = numRead - 1;
+	} else {
+		bookReadCountDisplay.innerHTML = 0;
 	}
 }
+
 
 //Functions
 
@@ -65,6 +72,7 @@ function removeCard(e) {
 		if(target.className === 'right') {
 			target.parentNode.parentNode.parentNode.removeChild(target.parentNode.parentNode);
 			countDown();
+			countDownRead();
 
 		}
 		 target = target.parentNode.parentNode;
