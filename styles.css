@@ -4,6 +4,7 @@ body{
 	display: flex;
 	flex-wrap: nowrap;
 	background-color: #D1D8DC;
+	margin:0;
 }
 
 section{
@@ -36,6 +37,7 @@ input{
 	border: 0;
 	width: 100%;
 	height: 5vh;
+	min-height: 25px;
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;
@@ -48,6 +50,7 @@ input{
 	position: relative;
 	min-height: 100vh;
 	overflow: hidden;
+	padding:10px;
 }
 
 .user-input{
@@ -74,13 +77,18 @@ input{
 
 .count-display {
 	text-align: left;
+	margin:5px;
 }
 
 .circle {
-	height: 25px;
-	width: 25px;
+	height: 4vh;
+	width: 4vh;
+	min-height: 25px;
+	min-width: 25px;
+	padding:2px;
 	border-radius: 50%;
-	line-height: 25px;
+	line-height: 4vh;
+	min-inline-size: 25px;
 	background-color: #D1D8DC;
 	text-align: center;
 }
@@ -94,6 +102,16 @@ input{
 	display: inline-block;
 	float:right;
 	color: red;
+	transition: background-color 2s, color 2s;
+}
+
+.bookmarks-read-on-page:hover {
+	background-color: red;
+	color:white;
+}
+
+.bookmarks-read-on-page:active {
+	transform: translate(1px, 1px);
 }
 
 .url-list{
@@ -112,10 +130,16 @@ input{
 	border: none;
 	width: 100%;
 	height: 5vh;
+	min-height: 25px;
+	transition: background-color 1s;
 }
 
 .enter-button:hover{
 	background-color: #FFD773;
+}
+
+.enter-button:active {
+	transform: translate(2px, 1px);
 }
 
 .display-wrapper{
@@ -217,6 +241,10 @@ input{
 }
 
 .left-read{
+	color: #F05828;
+}
+
+.bookmark-read:hover .left-read {
 	color: #F05828;
 }
 
