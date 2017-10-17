@@ -83,6 +83,13 @@ function displayError() {
 	}
 }
 
+urlInput.addEventListener('keyup', enterButton);
+titleInput.addEventListener('keyup', enterButton);
 
+function enterButton() {
+	if(event.which === 13) {
+		displayError();
+	}
+};
 
 
