@@ -44,7 +44,7 @@ function displayBookmark() {
 	urlInput.value = '';
 	titleInput.value = '';
 	bookmarkCard.className = 'bookmark';
-	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><button class="left" id="read-button">Read</button><button class="right" id="delete-button">Delete</button></div>';
+	bookmarkCard.innerHTML = '<h3 "tabindex=1">'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><button class="left" id="read-button">Read</button><button class="right" id="delete-button">Delete</button></div>';
 	displayWrapper.appendChild(bookmarkCard);
 	bookmarkCount = document.querySelectorAll('.bookmark').length;
 	bookCountDisplay.innerHTML = bookmarkCount;
