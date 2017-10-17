@@ -3,7 +3,6 @@ var displayWrapper = document.querySelector('.display-wrapper');
 var titleInput = document.querySelector('#title');
 var urlInput = document.querySelector('#url');
 var submitButton = document.querySelector('.enter-button');
-
 var bookmarkReadCount = 0;
 var bookmarkCount = 0;
 var bookReadCountDisplay = document.querySelector('.bookmarks-read-on-page');
@@ -12,7 +11,7 @@ var bookCountDisplay = document.querySelector('.bookmarks-on-page');
 displayWrapper.addEventListener('click', removeCard);
 submitButton.addEventListener('click', displayError)
 
-$("#right-container").on('click', '#read-button', function() {
+$('#right-container').on('click', '#read-button', function() {
 	$(this).toggleClass('left-read')
 	$(this).closest('.bookmark').toggleClass('bookmark-read');
 	$(this).closest('a').toggleClass('user-supplied-link-read');
@@ -24,7 +23,6 @@ function counter() {
 	bookmarkCount = document.querySelectorAll('.bookmark').length;
 	bookReadCountDisplay.innerHTML = bookmarkReadCount;
 	bookCountDisplay.innerHTML = bookmarkCount - bookmarkReadCount;
-
 }
 
 function countDown() {
@@ -38,8 +36,6 @@ function countDown() {
 	}
 }
 
-//Functions
-
 //DISPLAY FUNCTION
 function displayBookmark() {
 	var url = document.getElementById('url').value;
@@ -52,7 +48,6 @@ function displayBookmark() {
 	displayWrapper.appendChild(bookmarkCard);
 	bookmarkCount = document.querySelectorAll('.bookmark').length;
 	bookCountDisplay.innerHTML = bookmarkCount;
-	console.log(bookmarkCount)
 };
 
 function removeCard(e) {
@@ -70,17 +65,16 @@ function displayError() {
 	var titleLength = $('#title').val().length;
 	var urlLength = $('#url').val().length;
 	var errorDisplay = $('.error-feedback-display');
-
 	if (titleLength === 0 && urlLength === 0) {
-		errorDisplay.text("Please enter website title and url");
+		errorDisplay.text('Please enter website title and url');
 		titleLength = 0;
 		urlLength= 0;
 		return;
 	} else if (titleLength === 0 ) {
-		errorDisplay.text("Please enter website title")
+		errorDisplay.text('Please enter website title')
 		titleLength = 0;
 	} else if (urlLength === 0) {
-		errorDisplay.text("Please enter a URL")
+		errorDisplay.text('Please enter a URL')
 		urlLength = 0;
 	}
 	else {
