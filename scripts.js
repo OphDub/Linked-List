@@ -89,6 +89,7 @@ titleInput.addEventListener('keyup', enterButton);
 function enterButton() {
 	if(event.which === 13) {
 		displayError();
+		document.getElementById('title').focus();
 	}
 };
 
