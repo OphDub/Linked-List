@@ -76,8 +76,8 @@ function displayError() {
 	} else if (urlLength === 0) {
 		errorDisplay.text('Please enter a URL')
 		urlLength = 0;
-	}
-	else {
+	} 
+		else {
 		displayBookmark();
 		errorDisplay.text('');
 	}
@@ -92,4 +92,11 @@ function enterButton() {
 	}
 };
 
+var clearReadButton = document.querySelector('.bookmarks-read-on-page');
 
+clearReadButton.addEventListener('click', clearAllReadCards);
+
+function clearAllReadCards () {
+	$('.bookmark-read').remove();
+	countDown();
+}
