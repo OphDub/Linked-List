@@ -103,6 +103,7 @@ input{
 	float:right;
 	color: red;
 	transition: background-color 2s, color 2s;
+	cursor: pointer;
 }
 
 .bookmarks-read-on-page:hover {
