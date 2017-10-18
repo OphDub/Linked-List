@@ -12,7 +12,7 @@ displayWrapper.addEventListener('click', removeCard);
 submitButton.addEventListener('click', displayError)
 
 $('#right-container').on('click', '#read-button', function() {
-	$(this).toggleClass('left-read')
+	$(this).toggleClass('left-read');
 	$(this).closest('.bookmark').toggleClass('bookmark-read');
 	$(this).closest('a').toggleClass('user-supplied-link-read');
 	counter();
@@ -65,6 +65,7 @@ function displayError() {
 	var titleLength = $('#title').val().length;
 	var urlLength = $('#url').val().length;
 	var errorDisplay = $('.error-feedback-display');
+	
 	if (titleLength === 0 && urlLength === 0) {
 		errorDisplay.text('Please enter website title and url');
 		titleLength = 0;
@@ -81,7 +82,29 @@ function displayError() {
 		displayBookmark();
 		errorDisplay.text('');
 	}
-}
+
+// 	var regex1 = /^(ftp|http|https):\/\/[^ "]+$/;
+// 	var regex2 = /^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|io|COM|ORG|NET|MIL|EDU|IO)$/;
+
+// 	if (regex1.test(urlInput.value) === false) {
+// 		console.log('regex1');
+// 		var correctedUrl = appendUrlFront(urlInput.value);
+// 		debugger;
+// 		url = thing;
+// 		displayBookmark(thing);
+// 		titleLength = '';
+// 		urlLength = '';
+// 	} else if (regex2.test(urlInput.value) === false) {
+// 		console.log('regex2');
+// 		errorDisplay.text('Please enter a valid URL');
+// 		titleLength = '';
+// 		urlLength = '';
+// 	} else {
+// 		displayBookmark();
+// 		errorDisplay.text('');
+// 		console.log('clear');
+// 	}
+// }
 
 urlInput.addEventListener('keyup', enterButton);
 titleInput.addEventListener('keyup', enterButton);
@@ -101,3 +124,21 @@ function clearAllReadCards () {
 	$('.bookmark-read').remove();
 	countDown();
 }
+
+// function appendUrlFront (value) {
+// 	if (value && !value.match(/^.+:\/\/.*/)) {
+// 		console.log(value)
+// 		thing = 'http://' + value;
+// 	}
+// };
+
+// var thing = ''
+// function regexFront() {
+// 	var regex1 = /^(ftp|http|https):\/\/[^ "]+$/;
+// 	regex1.test();
+// };
+
+// function regexBack() {
+// 	var regex2 = /^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|io|COM|ORG|NET|MIL|EDU|IO)$/;
+// 	regex2.test();
+// };
