@@ -1,4 +1,4 @@
-//Global Variables
+//GLOBAL VARIABLES
 var displayWrapper = document.querySelector('.display-wrapper');
 var titleInput = document.querySelector('#title');
 var urlInput = document.querySelector('#url');
@@ -7,9 +7,14 @@ var bookmarkReadCount = 0;
 var bookmarkCount = 0;
 var bookReadCountDisplay = document.querySelector('.bookmarks-read-on-page');
 var bookCountDisplay = document.querySelector('.bookmarks-on-page');
+var clearReadButton = document.querySelector('.bookmarks-read-on-page');
 
+//EVENT LISTENERS
+urlInput.addEventListener('keyup', enterButton);
+titleInput.addEventListener('keyup', enterButton);
 displayWrapper.addEventListener('click', removeCard);
 submitButton.addEventListener('click', displayError)
+clearReadButton.addEventListener('click', clearAllReadCards);
 
 $('#right-container').on('click', '#read-button', function() {
 	$(this).toggleClass('left-read')
@@ -83,18 +88,11 @@ function displayError() {
 	}
 }
 
-urlInput.addEventListener('keyup', enterButton);
-titleInput.addEventListener('keyup', enterButton);
-
 function enterButton() {
 	if(event.which === 13) {
 		displayError();
 	}
 };
-
-var clearReadButton = document.querySelector('.bookmarks-read-on-page');
-
-clearReadButton.addEventListener('click', clearAllReadCards);
 
 function clearAllReadCards () {
 	$('.bookmark-read').remove();
