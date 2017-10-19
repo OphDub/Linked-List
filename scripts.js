@@ -7,7 +7,6 @@ var bookmarkReadCount = 0;
 var bookmarkCount = 0;
 var bookReadCountDisplay = document.querySelector('.bookmarks-read-on-page');
 var bookCountDisplay = document.querySelector('.bookmarks-on-page');
-
 var regexProtocol = /^(ftp|http|https):\/\/[^ "]+$/;
 var regexDomainAddress = /^((https?|ftp|smtp)?:\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/
 var userUrl = '';
@@ -19,6 +18,7 @@ submitButton.addEventListener('click', displayError);
 urlInput.addEventListener('keyup', enterButton);
 titleInput.addEventListener('keyup', enterButton);
 clearReadButton.addEventListener('click', clearAllReadCards);
+
 //FUNCTIONS
 $('#right-container').on('click', '#read-button', function() {
 	$(this).toggleClass('left-read');
@@ -52,7 +52,7 @@ function displayBookmark(userUrl) {
 	urlInput.value = '';
 	titleInput.value = '';
 	bookmarkCard.className = 'bookmark';
-	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+userUrl+'</a><div class="read-delete"><button class="left" id="read-button">Read</button><button class="right" id="delete-button">Delete</button></div>';
+	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href='+userUrl+' target = "_blank"> '+userUrl+'</a><div class="read-delete"><button class="left" id="read-button">Read</button><button class="right" id="delete-button">Delete</button></div>';
 	displayWrapper.appendChild(bookmarkCard);
 	bookmarkCount = document.querySelectorAll('.bookmark').length;
 	bookCountDisplay.innerHTML = bookmarkCount;
@@ -67,7 +67,7 @@ function removeCard(e) {
 		}
 		 target = target.parentNode.parentNode;
 	}
-}
+};
 
 function displayError() {
 	var titleLength = $('#title').val().length;
@@ -84,27 +84,23 @@ function displayError() {
 	} else if (urlLength === 0) {
 		errorDisplay.text('Please enter a URL');
 		urlLength = 0;
-
-//REGEX VALIDATION OF URL
+		//REGEX VALIDATION OF URL
 	} else if (regexDomainAddress.test(urlInput.value) === true && regexProtocol.test(urlInput.value) === true) {
-		console.log('regexDomainAddress passed. regexProtocol passed. Card appended to DOM without change.');
 		displayBookmark(urlInput.value);
 		errorDisplay.text('');
 	} else if (regexDomainAddress.test(urlInput.value) === true && regexProtocol.test(urlInput.value) === false) {
-		console.log('regexDomain passed. regexProtocol failed. Protocol appended for user.');
 		var correctedUrl = appendUrlFront(urlInput.value);
+		errorDisplay.text('');
 		url = userUrl;
 		console.log(userUrl);
 		displayBookmark(userUrl);
 		titleInput.value = '';
 		urlInput.value = '';
 	} else if (regexDomainAddress.test(urlInput.value) === false && regexProtocol.test(urlInput.value) === true) {
-		console.log('regexProtocol passed. regexDomainAddress failed');
 		errorDisplay.text('Please enter a valid URL');
 		titleInput.value = '';
 		urlInput.value = '';
 	} else {
-		console.log('Jon Snow, you know nothing.');
 		errorDisplay.text('Please enter a valid URL');
 		titleInput.value = '';
 		urlInput.value = '';
@@ -116,7 +112,6 @@ function appendUrlFront (value) {
 		userUrl = 'http://' + value;
 	}
 };
-
 
 function enterButton() {
 	if(event.which === 13) {
