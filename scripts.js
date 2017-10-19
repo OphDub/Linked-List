@@ -1,4 +1,4 @@
-//Global Variables
+//GLOBAL VARIABLES
 var displayWrapper = document.querySelector('.display-wrapper');
 var titleInput = document.querySelector('#title');
 var urlInput = document.querySelector('#url');
@@ -7,10 +7,20 @@ var bookmarkReadCount = 0;
 var bookmarkCount = 0;
 var bookReadCountDisplay = document.querySelector('.bookmarks-read-on-page');
 var bookCountDisplay = document.querySelector('.bookmarks-on-page');
+var regexProtocol = /^(ftp|http|https):\/\/[^ "]+$/;
+var regexDomainAddress = /^((https?|ftp|smtp)?:\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/
+var userUrl = '';
+var clearReadButton = document.querySelector('.bookmarks-read-on-page');
 
+//EVENT LISTENERS
 displayWrapper.addEventListener('click', removeCard);
-submitButton.addEventListener('click', displayError)
+submitButton.addEventListener('click', displayError);
+urlInput.addEventListener('keyup', enterButton);
+titleInput.addEventListener('keyup', enterButton);
+clearReadButton.addEventListener('click', clearAllReadCards);
 
+//FUNCTIONS
+//Read Class Toggle
 $('#right-container').on('click', '#read-button', function() {
 	$(this).toggleClass('left-read');
 	$(this).closest('.bookmark').toggleClass('bookmark-read');
@@ -36,15 +46,15 @@ function countDown() {
 	}
 }
 
-//DISPLAY FUNCTION
-function displayBookmark() {
+//DISPLAY BOOKMARK FUNCTION
+function displayBookmark(userUrl) {
 	var url = document.getElementById('url').value;
 	var urlTitle = document.getElementById('title').value;
 	var bookmarkCard = document.createElement('div');
 	urlInput.value = '';
 	titleInput.value = '';
 	bookmarkCard.className = 'bookmark';
-	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+url+'</a><div class="read-delete"><button class="left" id="read-button">Read</button><button class="right" id="delete-button">Delete</button></div>';
+	bookmarkCard.innerHTML = '<h3>'+urlTitle+'</h3><a class="user-supplied-link" href=""> '+userUrl+'</a><div class="read-delete"><button class="left" id="read-button">Read</button><button class="right" id="delete-button">Delete</button></div>';
 	displayWrapper.appendChild(bookmarkCard);
 	bookmarkCount = document.querySelectorAll('.bookmark').length;
 	bookCountDisplay.innerHTML = bookmarkCount;
@@ -72,42 +82,43 @@ function displayError() {
 		urlLength= 0;
 		return;
 	} else if (titleLength === 0 ) {
-		errorDisplay.text('Please enter website title')
+		errorDisplay.text('Please enter website title');
 		titleLength = 0;
 	} else if (urlLength === 0) {
-		errorDisplay.text('Please enter a URL')
+		errorDisplay.text('Please enter a URL');
 		urlLength = 0;
-	} 
-		else {
-		displayBookmark();
+
+//REGEX VALIDATION OF URL
+	} else if (regexDomainAddress.test(urlInput.value) === true && regexProtocol.test(urlInput.value) === true) {
+		console.log('regexDomainAddress passed. regexProtocol passed. Card appended to DOM without change.');
+		displayBookmark(urlInput.value);
 		errorDisplay.text('');
+	} else if (regexDomainAddress.test(urlInput.value) === true && regexProtocol.test(urlInput.value) === false) {
+		console.log('regexDomain passed. regexProtocol failed. Protocol appended for user.');
+		var correctedUrl = appendUrlFront(urlInput.value);
+		url = userUrl;
+		console.log(userUrl);
+		displayBookmark(userUrl);
+		titleInput.value = '';
+		urlInput.value = '';
+	} else if (regexDomainAddress.test(urlInput.value) === false && regexProtocol.test(urlInput.value) === true) {
+		console.log('regexProtocol passed. regexDomainAddress failed');
+		errorDisplay.text('Please enter a valid URL');
+		titleInput.value = '';
+		urlInput.value = '';
+	} else {
+		console.log('Jon Snow, you know nothing.');
+		errorDisplay.text('Please enter a valid URL');
+		titleInput.value = '';
+		urlInput.value = '';
 	}
+};
 
-// 	var regex1 = /^(ftp|http|https):\/\/[^ "]+$/;
-// 	var regex2 = /^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|io|COM|ORG|NET|MIL|EDU|IO)$/;
-
-// 	if (regex1.test(urlInput.value) === false) {
-// 		console.log('regex1');
-// 		var correctedUrl = appendUrlFront(urlInput.value);
-// 		debugger;
-// 		url = thing;
-// 		displayBookmark(thing);
-// 		titleLength = '';
-// 		urlLength = '';
-// 	} else if (regex2.test(urlInput.value) === false) {
-// 		console.log('regex2');
-// 		errorDisplay.text('Please enter a valid URL');
-// 		titleLength = '';
-// 		urlLength = '';
-// 	} else {
-// 		displayBookmark();
-// 		errorDisplay.text('');
-// 		console.log('clear');
-// 	}
-// }
-
-urlInput.addEventListener('keyup', enterButton);
-titleInput.addEventListener('keyup', enterButton);
+function appendUrlFront (value) {
+	if (value && !value.match(/^.+:\/\/.*/)) {
+		userUrl = 'http://' + value;
+	}
+};
 
 function enterButton() {
 	if(event.which === 13) {
@@ -116,29 +127,7 @@ function enterButton() {
 	}
 };
 
-var clearReadButton = document.querySelector('.bookmarks-read-on-page');
-
-clearReadButton.addEventListener('click', clearAllReadCards);
-
 function clearAllReadCards () {
 	$('.bookmark-read').remove();
 	countDown();
-}
-
-// function appendUrlFront (value) {
-// 	if (value && !value.match(/^.+:\/\/.*/)) {
-// 		console.log(value)
-// 		thing = 'http://' + value;
-// 	}
-// };
-
-// var thing = ''
-// function regexFront() {
-// 	var regex1 = /^(ftp|http|https):\/\/[^ "]+$/;
-// 	regex1.test();
-// };
-
-// function regexBack() {
-// 	var regex2 = /^[a-zA-Z0-9\-\.]+\.(com|org|net|mil|edu|io|COM|ORG|NET|MIL|EDU|IO)$/;
-// 	regex2.test();
-// };
+};
