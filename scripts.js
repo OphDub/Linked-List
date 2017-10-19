@@ -92,7 +92,6 @@ function displayError() {
 		var correctedUrl = appendUrlFront(urlInput.value);
 		errorDisplay.text('');
 		url = userUrl;
-		console.log(userUrl);
 		displayBookmark(userUrl);
 		titleInput.value = '';
 		urlInput.value = '';
