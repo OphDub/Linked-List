@@ -48,7 +48,6 @@ function countDown() {
 
 //DISPLAY BOOKMARK FUNCTION
 function displayBookmark(userUrl) {
-	var url = document.getElementById('url').value;
 	var urlTitle = document.getElementById('title').value;
 	var bookmarkCard = document.createElement('div');
 	urlInput.value = '';
