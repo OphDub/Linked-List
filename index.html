@@ -12,37 +12,30 @@
 	<section id="" class="input-wrapper">
 		<div class="user-input">
 			<header>
-			<h1>Linked<img src="/Users/Parker/Desktop/code/Turing/mod1/linkedList/Linked-list/linked-list-logo.svg" alt="Linked list chain link logo">List</h1>
+			<h1>Linked<img src="/Users/Parker/Desktop/code/turing/mod1/Linked-list/linked-list-logo.svg" alt="Linked list chain link logo">List</h1>
 			</header>
 		
 			<form id="website-form">
-				<input id="title" class="website-title" type="text" name="website-title" placeholder="Website Title" required>
-				<input id="url" class="website-url" type="text" name="website-url" placeholder="Website URL" required>
-				<button type="reset" class="enter-button">Enter</button>
+				<label for="title"></label>
+				<input id="title" class="website-title form-styling" type="text" name="website-title" placeholder="Website Title" required>
+				<label for="url"></label>
+				<input id="url" class="website-url form-styling" type="text" name="website-url" placeholder="Website URL" required>
+
+				<button aria-label="Enter bookmark" type="reset" class="enter-button form-styling">Enter</button>
 			</form>
 
 			<div class="error-feedback-display"></div>
 			
 			<div class = "count-display">
 				<span class="circle bookmarks-on-page">0</span>
-				<span class="circle bookmarks-read-on-page">0</span>
+
+				<span tabindex = "1" aria-label="Delete all read bookmarks"class="circle bookmarks-read-on-page">0</span>
 			</div>
 
 		</div>
 
 	</section>
 	<section class="url-list display-wrapper" id = "right-container">
-
-<!-- 
-<div>
-'<h3>'+urlTitle+'</h3>
-	<a class="user-supplied-link" href=""> '+url+'</a>
-<div class="read-delete">
-	<button class="left" id="read-button">Read</button>
-	<button class="right" id="delete-button">Delete</button>
-</div>'
-</div> -->
-	
 	</section>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts.js"></script>

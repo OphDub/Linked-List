@@ -7,6 +7,7 @@ var bookmarkReadCount = 0;
 var bookmarkCount = 0;
 var bookReadCountDisplay = document.querySelector('.bookmarks-read-on-page');
 var bookCountDisplay = document.querySelector('.bookmarks-on-page');
+
 var regexProtocol = /^(ftp|http|https):\/\/[^ "]+$/;
 var regexDomainAddress = /^((https?|ftp|smtp)?:\/\/)?(www.)?[a-z0-9]+(\.[a-z]{2,}){1,3}(#?\/?[a-zA-Z0-9#]+)*\/?(\?[a-zA-Z0-9-_]+=[a-zA-Z0-9-%]+&?)?$/
 var userUrl = '';
@@ -18,9 +19,7 @@ submitButton.addEventListener('click', displayError);
 urlInput.addEventListener('keyup', enterButton);
 titleInput.addEventListener('keyup', enterButton);
 clearReadButton.addEventListener('click', clearAllReadCards);
-
 //FUNCTIONS
-//Read Class Toggle
 $('#right-container').on('click', '#read-button', function() {
 	$(this).toggleClass('left-read');
 	$(this).closest('.bookmark').toggleClass('bookmark-read');
@@ -74,7 +73,6 @@ function displayError() {
 	var titleLength = $('#title').val().length;
 	var urlLength = $('#url').val().length;
 	var errorDisplay = $('.error-feedback-display');
-	
 	if (titleLength === 0 && urlLength === 0) {
 		errorDisplay.text('Please enter website title and url');
 		titleLength = 0;
@@ -118,6 +116,7 @@ function appendUrlFront (value) {
 		userUrl = 'http://' + value;
 	}
 };
+
 
 function enterButton() {
 	if(event.which === 13) {
